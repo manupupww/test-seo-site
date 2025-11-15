@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Agent Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f8f9fa; }
+        .card { margin: 20px 0; }
+        .status { padding: 10px; border-radius: 5px; }
+        .online { background: #d4edda; color: #155724; }
+        .offline { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">SEO Agent Dashboard</h1>
+        <p>Monitor your AI-powered SEO agent's performance and activities.</p>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Agent Status</div>
+                    <div class="card-body">
+                        <div class="status online">Agent is Online and Running</div>
+                        <p>Last activity: Generating content and updating website</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Recent Activities</div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Generated new blog post: "Why Choose Eco-Friendly Junk Removal"</li>
+                            <li>Checked search rankings for "junk removal Vilnius"</li>
+                            <li>Monitored competitor websites</li>
+                            <li>Posted to social media</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">SEO Metrics</div>
+                    <div class="card-body">
+                        <p>Current Rank: #5 for "junk removal Vilnius"</p>
+                        <p>Posts Generated: 3</p>
+                        <p>Competitors Monitored: 2</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">System Health</div>
+                    <div class="card-body">
+                        <p>API Calls Today: 15</p>
+                        <p>Errors: 0</p>
+                        <p>Next Run: In 45 minutes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Agent Logs</div>
+            <div class="card-body">
+                <pre>
+Using GitHub token: ghp_...
+Token test status: 200
+Deployment: Successfully deployed expert post to website.
+Posted to social media: New blog post...
+Workflow result: Expert workflow completed.
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
