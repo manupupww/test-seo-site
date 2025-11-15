@@ -26,12 +26,26 @@ def create_deployment_chain():
         filename = f"_posts/{time.strftime('%Y-%m-%d')}-expert-seo-post.md"
         url = f"https://api.github.com/repos/manupupww/test-seo-site/contents/{filename}"
         headers = {"Authorization": f"token {github_token}", "Accept": "application/vnd.github.v3+json"}
+
+        # Check if file exists
+        get_response = requests.get(url, headers=headers)
+        file_exists = get_response.status_code == 200
+        sha = None
+        if file_exists:
+            try:
+                sha = get_response.json().get("sha")
+            except:
+                pass
+
         # Encode content to base64
         content_b64 = base64.b64encode(content.encode()).decode()
         data = {
             "message": "Expert AI SEO post upload",
             "content": content_b64
         }
+        if sha:
+            data["sha"] = sha  # For updates
+
         response = requests.put(url, json=data, headers=headers)
         if response.status_code in [201, 200]:
             return "Successfully deployed expert post to website. Check https://manupupww.github.io/test-seo-site/ for updates."

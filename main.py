@@ -24,13 +24,12 @@ def main():
     rank_checker = RankCheckerAgent(tavily_key)
     content_gen = ContentGeneratorAgent()
     competitor_monitor = CompetitorMonitorAgent(firecrawl_key, tavily_key, ["https://example-competitor.com"])
-    github_token = os.getenv("GITHUB_TOKEN")  # Set this env var
     website_tool = WebsiteAPITool("https://api.github.com/repos/manupupww/test-seo-site/contents", github_token)
 
     # Orchestrator
     orchestrator = OrchestratorAgent(
         competitor_keys={"firecrawl_key": firecrawl_key, "tavily_key": tavily_key, "competitors": ["https://example-competitor.com"]},
-        website_api_config={"api_url": "https://api.github.com/repos/manupupww/test-seo-site/contents", "api_key": "your_github_token"}
+        website_api_config={"api_url": "https://api.github.com/repos/manupupww/test-seo-site/contents", "api_key": github_token}
     )
 
     # Run workflow
