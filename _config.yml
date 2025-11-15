@@ -1,11 +1,11 @@
 title: Quick Junk Removal
-description: Professional junk removal services with eco-friendly disposal
+description: Elite junk removal services with eco-friendly disposal and 5-star customer satisfaction
 url: https://manupupww.github.io
 baseurl: /test-seo-site
 
 markdown: kramdown
 highlighter: rouge
-theme: minima
+theme: jekyll-theme-minimal
 
 plugins:
   - jekyll-feed
