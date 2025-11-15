@@ -9,11 +9,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the project
 COPY . .
 
-# Set environment variables (override with actual keys)
-ENV GOOGLE_GENAI_API_KEY="AIzaSyAFtHcgwjrP6ltZEzKvTZeUnHCDRzOrXAM"
-ENV TAVILY_API_KEY="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"
-ENV FIRECRAWL_API_KEY="fc-278b83825f1749a3ba02f11815861fdc"
-ENV GITHUB_TOKEN="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"
+# Environment variables will be set in Render dashboard for security
+# DO NOT hardcode secrets here
 
 # Install cron and set up for 24/7 operation
 RUN apt-get update && apt-get install -y cron
