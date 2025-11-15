@@ -1,0 +1,12 @@
+title: Test SEO Site
+description: AI Agent Testing Site
+url: https://manupupww.github.io
+baseurl: /test-seo-site
+
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
