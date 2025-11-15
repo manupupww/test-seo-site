@@ -1,2 +1,2 @@
-# Run agent every 6 hours
-0 */6 * * * cd /app && python main.py >> /app/logs/agent.log 2>&1
+# Run agent every 1 hour for better monitoring
+0 * * * * cd /app && python main.py >> /app/logs/agent.log 2>&1
