@@ -4,6 +4,7 @@ from chains.deployment_chain import create_deployment_chain
 from agents.competitor_monitor import CompetitorMonitorAgent
 from agents.rank_checker import RankCheckerAgent
 from agents.market_analyzer import MarketAnalyzerAgent
+from agents.social_media_agent import SocialMediaAgent
 from tools.website_api_tool import WebsiteAPITool
 
 class OrchestratorAgent:
@@ -13,6 +14,7 @@ class OrchestratorAgent:
         self.deploy_chain = create_deployment_chain()
         self.competitor_agent = CompetitorMonitorAgent(**competitor_keys)
         self.market_agent = MarketAnalyzerAgent(competitor_keys.get("tavily_key", "mock_key"))
+        self.social_agent = SocialMediaAgent("mock_key")  # Add real API key later
         self.website_tool = WebsiteAPITool(**website_api_config)
 
     def run_workflow(self):
@@ -51,6 +53,12 @@ class OrchestratorAgent:
                 # Deploy to website
                 deploy_result = self.deploy_chain(content)
                 print(f"Deployment: {deploy_result}")
+                # Post to social media
+                try:
+                    social_result = self.social_agent.post_blog_update("New Expert SEO Post", "https://manupupww.github.io/test-seo-site/")
+                    print(f"Social Media: {social_result}")
+                except Exception as e:
+                    print(f"Social media post failed: {str(e)}")
             except Exception as e:
                 print(f"Content generation/deployment failed: {str(e)}")
                 return f"Workflow partially completed: {str(e)}"
