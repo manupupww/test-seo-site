@@ -5,6 +5,7 @@ from agents.competitor_monitor import CompetitorMonitorAgent
 from agents.rank_checker import RankCheckerAgent
 from agents.market_analyzer import MarketAnalyzerAgent
 from agents.social_media_agent import SocialMediaAgent
+from agents.analytics_agent import AnalyticsAgent
 from tools.website_api_tool import WebsiteAPITool
 
 class OrchestratorAgent:
@@ -15,6 +16,7 @@ class OrchestratorAgent:
         self.competitor_agent = CompetitorMonitorAgent(**competitor_keys)
         self.market_agent = MarketAnalyzerAgent(competitor_keys.get("tavily_key", "mock_key"))
         self.social_agent = SocialMediaAgent("mock_key")  # Add real API key later
+        self.analytics_agent = AnalyticsAgent()
         self.website_tool = WebsiteAPITool(**website_api_config)
 
     def run_workflow(self):
@@ -64,6 +66,13 @@ class OrchestratorAgent:
                     print(f"Social Media: {social_result}")
                 except Exception as e:
                     print(f"Social media post failed: {str(e)}")
+
+                # Generate analytics report
+                try:
+                    analytics_report = self.analytics_agent.generate_report()
+                    print(f"Analytics: {analytics_report}")
+                except Exception as e:
+                    print(f"Analytics report failed: {str(e)}")
             except Exception as e:
                 print(f"Content generation/deployment failed: {str(e)}")
                 return f"Workflow partially completed: {str(e)}"
