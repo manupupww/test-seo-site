@@ -26,9 +26,34 @@ update_success = Criteria(
     evaluator=lambda result: result.get("update_status") == "success"
 )
 
+# Additional criteria to avoid penalties
+content_uniqueness = Criteria(
+    name="content_uniqueness",
+    description="Ensure content is unique and not duplicated",
+    evaluator=lambda result: len(set(result.get("content", "").split())) / len(result.get("content", "").split()) > 0.7  # Rough uniqueness check
+)
+
+keyword_density = Criteria(
+    name="keyword_density",
+    description="Check keyword density is not too high (avoid stuffing)",
+    evaluator=lambda result: result.get("keyword_density", 0) < 0.05  # Less than 5%
+)
+
+natural_language = Criteria(
+    name="natural_language",
+    description="Assess if content reads naturally (basic check)",
+    evaluator=lambda result: " " in result.get("content", "") and len(result.get("content", "").split(".")) > 3  # Has spaces and sentences
+)
+
+update_frequency = Criteria(
+    name="update_frequency",
+    description="Ensure updates are not too frequent",
+    evaluator=lambda result: result.get("hours_since_last_update", 24) >= 6  # At least 6 hours
+)
+
 # LangChain Callbacks for Safety
 safety_callback = StdOutCallbackHandler()
 
 # Usage in agents
 # agent.callbacks = [safety_callback]
-# runtime.evaluate(criteria=[rank_improvement, content_quality, competitor_gap, update_success])
+# runtime.evaluate(criteria=[rank_improvement, content_quality, competitor_gap, update_success, content_uniqueness, keyword_density, natural_language, update_frequency])
