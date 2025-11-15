@@ -229,19 +229,9 @@ layout: default
     <section id="blog" class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center mb-5 fw-bold">Latest SEO Insights</h2>
-            <div class="row">
-                {% for post in site.posts limit:3 %}
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <h5><a href="{{ post.url }}" class="text-decoration-none text-dark">{{ post.title }}</a></h5>
-                            <p class="text-muted small">{{ post.date | date: "%B %d, %Y" }}</p>
-                            <p class="card-text">{{ post.excerpt }}</p>
-                            <a href="{{ post.url }}" class="btn btn-outline-primary btn-sm">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
+            <p class="text-center">Our AI agent continuously generates fresh, SEO-optimized content. Check back soon for the latest posts!</p>
+            <div class="text-center">
+                <a href="/test-seo-site/_posts/" class="btn btn-outline-primary">View All Posts</a>
             </div>
         </div>
     </section>
