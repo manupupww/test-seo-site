@@ -8,6 +8,9 @@ class CompetitorMonitorAgent:
     def monitor_all(self):
         insights = []
         for url in self.competitors:
-            data = self.tool.monitor_competitor(url, "junk removal SEO Vilnius")
-            insights.append(data)
+            try:
+                data = self.tool.monitor_competitor(url, "junk removal SEO Vilnius")
+                insights.append(data)
+            except Exception as e:
+                insights.append(f"Error monitoring {url}: {str(e)}")
         return insights

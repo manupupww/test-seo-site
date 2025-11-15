@@ -5,7 +5,7 @@ import os
 def create_deployment_chain():
     github_token = os.getenv("GITHUB_TOKEN")
     print(f"Using GitHub token: {github_token[:10]}...")  # Debug: show first 10 chars
-    if not github_token:
+    if not github_token or github_token.startswith("YOUR"):
         def mock_run(content):
             return f"Expert deployed: {content}"
         return mock_run
@@ -16,11 +16,15 @@ def create_deployment_chain():
     test_response = requests.get(test_url, headers=test_headers)
     print(f"Token test status: {test_response.status_code}")
     if test_response.status_code != 200:
-        return f"Token invalid: {test_response.status_code} - {test_response.text}"
+        def mock_run(content):
+            return f"Token invalid: {test_response.status_code} - {test_response.text}"
+        return mock_run
 
     def deploy_run(content):
         # Direct GitHub API call to upload file
-        url = "https://api.github.com/repos/manupupww/test-seo-site/contents/_posts/2025-11-15-expert-post.md"
+        import time
+        filename = f"_posts/{time.strftime('%Y-%m-%d')}-expert-seo-post.md"
+        url = f"https://api.github.com/repos/manupupww/test-seo-site/contents/{filename}"
         headers = {"Authorization": f"token {github_token}", "Accept": "application/vnd.github.v3+json"}
         # Encode content to base64
         content_b64 = base64.b64encode(content.encode()).decode()

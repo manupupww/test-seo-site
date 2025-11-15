@@ -3,7 +3,7 @@ import os
 
 def create_rag_chain(site_url="https://manupupww.github.io/test-seo-site/"):
     api_key = os.getenv("GOOGLE_GENAI_API_KEY")
-    if not api_key:
+    if not api_key or api_key.startswith("YOUR"):
         def mock_run(query):
             return f"Expert RAG analysis for: {query}. Site needs better keywords and competitor insights."
         return mock_run

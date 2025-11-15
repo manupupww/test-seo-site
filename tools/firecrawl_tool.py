@@ -5,5 +5,8 @@ class FirecrawlTool:
         self.app = FirecrawlApp(api_key=api_key)
 
     def scrape_site(self, url):
-        result = self.app.scrape_url(url, params={'formats': ['markdown']})
-        return result['markdown']
+        try:
+            result = self.app.scrape_url(url, params={'formats': ['markdown']})
+            return result.get('data', {}).get('markdown', 'No content scraped')
+        except Exception as e:
+            return f"Scraping failed: {str(e)}"

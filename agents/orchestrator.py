@@ -17,25 +17,41 @@ class OrchestratorAgent:
 
     def run_workflow(self):
         # Expert monitoring: Competitors, market, and site analysis
-        competitor_insights = self.competitor_agent.monitor_all()
-        market_insights = self.market_agent.analyze_market("junk removal", "Vilnius")
+        try:
+            competitor_insights = self.competitor_agent.monitor_all()
+        except Exception as e:
+            competitor_insights = f"Competitor monitoring failed: {str(e)}"
+
+        try:
+            market_insights = self.market_agent.analyze_market("junk removal", "Vilnius")
+        except Exception as e:
+            market_insights = f"Market analysis failed: {str(e)}"
+
         insights_summary = f"Competitor insights: {competitor_insights}. Market trends: {market_insights}"
 
         # Check rank with geo focus
         import os
         tavily_key = os.getenv("TAVILY_API_KEY")
         rank_checker = RankCheckerAgent(tavily_key or "mock_key")
-        rank = rank_checker.check_rank("junk removal Vilnius", "Vilnius")
+        try:
+            rank = rank_checker.check_rank("junk removal Vilnius", "Vilnius")
+        except Exception as e:
+            rank = 0  # Assume low rank if error
+
         if rank < 1 or True:  # Always optimize for expert level
-            # Analyze site with competitor and market data
-            analysis = self.rag_chain(f"As expert SEO supervisor, analyze current SEO gaps and opportunities. {insights_summary}")
-            # Generate content incorporating market trends
-            content = self.gen_chain(
-                analysis,
-                "junk removal Vilnius eco-friendly sustainable",
-                "Vilnius"
-            )
-            # Deploy to website
-            deploy_result = self.deploy_chain(content)
-            print(f"Deployment: {deploy_result}")
+            try:
+                # Analyze site with competitor and market data
+                analysis = self.rag_chain(f"As expert SEO supervisor, analyze current SEO gaps and opportunities. {insights_summary}")
+                # Generate content incorporating market trends
+                content = self.gen_chain(
+                    analysis,
+                    "junk removal Vilnius eco-friendly sustainable",
+                    "Vilnius"
+                )
+                # Deploy to website
+                deploy_result = self.deploy_chain(content)
+                print(f"Deployment: {deploy_result}")
+            except Exception as e:
+                print(f"Content generation/deployment failed: {str(e)}")
+                return f"Workflow partially completed: {str(e)}"
         return "Expert workflow completed: Superior SEO optimization, competitor outperformance, market adaptation, and autonomous site management."

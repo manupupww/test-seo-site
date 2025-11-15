@@ -3,7 +3,7 @@ import os
 
 def create_generation_chain():
     api_key = os.getenv("GOOGLE_GENAI_API_KEY")
-    if not api_key:
+    if not api_key or api_key.startswith("YOUR"):
         def mock_run(docs, keywords, geo):
             return f"Expert generated blog post with keywords: {keywords}, geo: {geo}. Superior content: {docs}"
         return mock_run
