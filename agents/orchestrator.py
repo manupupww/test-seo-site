@@ -40,7 +40,12 @@ class OrchestratorAgent:
         except Exception as e:
             rank = 0  # Assume low rank if error
 
-        if rank < 1 or True:  # Always optimize for expert level
+        # Intelligent optimization: update if rank is low or market/competitor insights indicate changes
+        market_changed = "new" in market_insights.lower() or "trend" in market_insights.lower()
+        competitor_changed = len(competitor_insights) > 0 and any("content" in str(i).lower() for i in competitor_insights)
+        needs_update = rank < 5 or market_changed or competitor_changed
+
+        if needs_update:
             try:
                 # Analyze site with competitor and market data
                 analysis = self.rag_chain(f"As expert SEO supervisor, analyze current SEO gaps and opportunities. {insights_summary}")
