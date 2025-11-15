@@ -68,6 +68,10 @@ layout: default
             overflow: hidden;
         }
 
+        .stats-section, .features-section, .testimonial-section, .cta-section {
+            min-height: 50vh;
+        }
+
         .hero::before {
             content: '';
             position: absolute;
