@@ -1,0 +1,7 @@
+llm:
+  provider: openai
+  model: gpt-3.5-turbo
+  temperature: 0.0
+seo:
+  user_agent: "SEO-AgentBot/1.0"
+  timeout: 15

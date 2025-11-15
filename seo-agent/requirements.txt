@@ -1,0 +1,7 @@
+langchain
+langchain-openai
+httpx
+beautifulsoup4
+PyYAML
+tqdm
+# Add any additional provider/client libraries as needed

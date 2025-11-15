@@ -1,0 +1,14 @@
+title: Quick Junk Removal
+description: Professional junk removal services with eco-friendly disposal
+url: https://manupupww.github.io
+baseurl: /test-seo-site
+
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+author: Quick Junk Removal Team
