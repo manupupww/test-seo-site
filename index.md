@@ -1,19 +1,14 @@
----
-layout: default
----
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Junk Removal - Elite AI-Powered Waste Solutions | Free Quote</title>
-    <meta name="description" content="Revolutionary junk removal with AI optimization. 10,000+ satisfied customers, 99% satisfaction. Get instant FREE quote and save 30% on eco-friendly disposal.">
-    <meta name="keywords" content="AI junk removal, smart waste disposal, eco-friendly cleanup, instant quotes, professional haulers">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quantum Junk — Modern Junk Removal junk removal junk removal junk removal</title>
+
+  <!-- Modern font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
         :root {
             --primary: #6366f1;
             --secondary: #f59e0b;
@@ -249,273 +244,476 @@ layout: default
             transition: all 0.6s ease;
         }
 
-        .animate-on-scroll.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    :root{
+      --bg: #0b1020;
+      --card: rgba(255,255,255,0.03);
+      --muted: #9aa4c0;
+      --accent: linear-gradient(90deg,#ff7a18,#af002d 60%,#319197);
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --glass-border: rgba(255,255,255,0.06);
+      --white: #eef3ff;
+      --radius: 14px;
+      --maxw: 1200px;
+    }
 
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .hero-content {
-                padding: 1rem;
-            }
-        }
-    </style>
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(49,145,151,0.08), transparent 10%),
+        radial-gradient(900px 400px at 90% 90%, rgba(175,0,45,0.06), transparent 10%),
+        var(--bg);
+      color:var(--white);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding: 24px;
+    }
+
+    .container{
+      max-width: var(--maxw);
+      margin: 0 auto;
+    }
+
+    /* Top navigation */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--glass-border);
+      padding:14px 18px;
+      border-radius: 12px;
+      backdrop-filter: blur(6px) saturate(1.1);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo{
+      width:44px;height:44px;border-radius:10px;
+      background:var(--accent);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow: 0 6px 18px rgba(15,20,40,0.6);
+      font-weight:800;
+      font-size:18px;
+    }
+    header h1{font-size:18px;margin:0;letter-spacing:0.2px}
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{color:var(--white);text-decoration:none;font-weight:600;opacity:0.9}
+    .cta{
+      background:var(--accent);
+      padding:10px 14px;border-radius:10px;color:white;text-decoration:none;font-weight:700;
+      box-shadow: 0 8px 20px rgba(49,145,151,0.14), 0 2px 6px rgba(0,0,0,0.5);
+      transition:transform .18s ease,opacity .18s ease;
+    }
+    .cta:hover{transform:translateY(-3px);opacity:0.98}
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:30px;
+      align-items:center;
+      margin:28px 0;
+    }
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius: var(--radius);
+      padding:34px;
+      border:1px solid var(--glass-border);
+      box-shadow: 0 20px 60px rgba(2,6,23,0.6);
+      backdrop-filter: blur(8px);
+    }
+    .eyebrow{color:var(--muted);font-weight:600;font-size:13px}
+    .headline{
+      font-size:34px;
+      margin:8px 0 12px;
+      line-height:1.05;
+      letter-spacing:-0.6px;
+      color:var(--white)
+    }
+    .sub{
+      color:var(--muted);font-size:15px;margin-bottom:18px;
+    }
+    .kpis{display:flex;gap:12px;margin-top:18px}
+    .kpi{
+      background:var(--glass-2);
+      padding:12px 14px;border-radius:12px;border:1px solid var(--glass-border);
+      min-width:110px;text-align:center;
+    }
+    .kpi b{display:block;font-size:20px}
+    .hero-side{
+      display:flex;flex-direction:column;gap:12px;
+    }
+    .card-cta{
+      background: linear-gradient(90deg,#1ed0b3,#2aa3ff);
+      color:#041225;padding:14px;border-radius:12px;font-weight:700;text-align:center;
+      border:none;cursor:pointer;font-size:16px;
+      box-shadow: 0 12px 30px rgba(46,150,217,0.14);
+    }
+
+    /* Services grid */
+    .section{
+      margin:28px 0;
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:28px;
+      align-items:start;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+    }
+    .service{
+      padding:18px;border-radius:12px;background:var(--card);
+      border:1px solid var(--glass-border);
+      transition:transform .18s ease,box-shadow .18s ease;
+    }
+    .service:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(2,6,23,0.6)}
+    .service h3{margin:0 0 8px;font-size:18px}
+    .service p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Aside (pricing / features) */
+    .aside{
+      padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid var(--glass-border);
+    }
+    .price{
+      font-size:28px;font-weight:800;margin:8px 0;color:var(--white)
+    }
+    .btn-ghost{
+      display:inline-block;padding:10px 12px;border-radius:10px;border:1px solid var(--glass-border);
+      text-decoration:none;color:var(--white);font-weight:700;margin-top:8px;
+    }
+
+    /* Testimonials */
+    .testimonials{
+      margin-top:18px;display:flex;flex-direction:column;gap:12px;
+    }
+    .test{
+      background:var(--glass-2);padding:14px;border-radius:10px;border:1px solid var(--glass-border);
+    }
+
+    /* Contact form */
+    form{display:grid;gap:10px}
+    input,textarea,select{
+      width:100%;padding:12px;border-radius:10px;border:1px solid var(--glass-border);
+      background:transparent;color:var(--white);outline:none;font-size:14px;
+    }
+    textarea{min-height:120px;resize:vertical}
+    .row{display:flex;gap:10px}
+    .row > *{flex:1}
+
+    /* Footer */
+    footer{
+      margin-top:40px;background:transparent;
+      display:flex;flex-direction:column;gap:18px;
+      color:var(--muted);align-items:center;padding-bottom:24px;
+    }
+    .f-wrap{
+      width:100%;max-width:var(--maxw);display:flex;justify-content:space-between;gap:24px;
+      align-items:flex-start;padding:10px;border-radius:12px;
+    }
+    .f-col{min-width:160px}
+    .f-title{color:var(--white);margin-bottom:8px;font-weight:700}
+    .f-list a{display:block;color:var(--muted);text-decoration:none;margin-bottom:6px;font-size:14px}
+
+    .copyright{font-size:13px;color:var(--muted);text-align:center}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;align-items:start}
+      .section{grid-template-columns:1fr}
+      .hero-side{order:2}
+    }
+    @media (max-width:560px){
+      header{flex-direction:column;align-items:flex-start}
+      nav{order:2;width:100%;display:flex;justify-content:space-between;flex-wrap:wrap}
+      .brand{width:100%;justify-content:space-between}
+    }
+
+    /* subtle animations */
+    .fade-up{opacity:0;transform:translateY(8px);animation:fadeUp .6s forwards}
+    .stagger-1{animation-delay:.05s}
+    .stagger-2{animation-delay:.12s}
+    .stagger-3{animation-delay:.18s}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+  </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-robot"></i>
-                Quick Junk AI
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-                    <li class="nav-item"><a class="btn-custom ms-3" href="#cta">Get FREE Quote</a></li>
-                </ul>
-            </div>
+  <div class="container">
+    <header class="fade-up">
+      <div class="brand">
+        <div class="logo">QJ</div>
+        <div>
+          <h1>Quantum Junk junk removal junk removal junk removal</h1>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Modern junk removal junk removal • Tech-driven junk removal</div>
         </div>
-    </nav>
+      </div>
 
-    <main>
+      <nav>
+        <a href="#services">Services junk removal</a>
+        <a href="#how">How it Works junk removal</a>
+        <a href="#contact">Contact junk removal</a>
+        <a class="cta" href="#contact">Book Pickup junk removal</a>
+      </nav>
+    </header>
+
     <section class="hero">
-        <div class="container">
-            <div class="hero-content animate-on-scroll">
-                <h1>AI-Powered Junk Removal Revolution</h1>
-                <p class="lead">Experience the future of waste disposal. Our intelligent system optimizes routes, predicts demand, and delivers lightning-fast service with 99% accuracy.</p>
-                <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
-                    <a href="#cta" class="btn-custom btn-lg">🚀 Get Instant AI Quote</a>
-                    <a href="tel:+3706319487" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-phone me-2"></i>Call Now
-                    </a>
-                </div>
-                <div class="row mt-5 text-center">
-                    <div class="col-md-3 mb-3">
-                        <i class="fas fa-bolt fa-2x mb-2"></i>
-                        <div><strong>AI-Optimized</strong></div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <i class="fas fa-leaf fa-2x mb-2"></i>
-                        <div><strong>Eco-Smart</strong></div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <i class="fas fa-shield-alt fa-2x mb-2"></i>
-                        <div><strong>Insured</strong></div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <i class="fas fa-clock fa-2x mb-2"></i>
-                        <div><strong>24/7 Available</strong></div>
-                    </div>
-                </div>
-            </div>
+      <div class="hero-card fade-up stagger-1">
+        <div class="eyebrow">Same-day junk removal • Eco-first junk removal • Insured junk removal</div>
+        <h2 class="headline">Fast & Smart Junk Removal junk removal junk removal for Homes & Businesses junk removal</h2>
+        <p class="sub">We combine trained crews with smart routing and certified recycling to reduce cost and environmental impact junk removal. Transparent pricing, instant quotes, and reliable pickups junk removal.</p>
+
+        <div class="kpis">
+          <div class="kpi">
+            <b>24h junk removal</b>
+            <span style="color:var(--muted);font-size:13px">Avg pickup junk removal</span>
+          </div>
+          <div class="kpi">
+            <b>99% junk removal</b>
+            <span style="color:var(--muted);font-size:13px">Customer satisfaction junk removal</span>
+          </div>
+          <div class="kpi">
+            <b>70% junk removal</b>
+            <span style="color:var(--muted);font-size:13px">Recycled junk removal</span>
+          </div>
         </div>
+
+        <div style="margin-top:18px;display:flex;gap:12px;align-items:center">
+          <a href="#contact" class="card-cta">Get Instant Quote junk removal</a>
+          <a class="btn-ghost" href="#how">How it works junk removal</a>
+        </div>
+      </div>
+
+      <aside class="hero-side fade-up stagger-2">
+        <div class="aside">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-size:13px;color:var(--muted)">Quick estimate junk removal</div>
+              <div class="price">€79+ junk removal</div>
+            </div>
+            <div style="font-size:12px;color:var(--muted);text-align:right">Transparent pricing junk removal • no hidden fees junk removal</div>
+          </div>
+
+          <div style="margin-top:12px">
+            <div style="font-weight:700;margin-bottom:8px">What's included junk removal</div>
+            <ul style="margin:0;padding-left:18px;color:var(--muted);font-size:14px">
+              <li>Pickup & heavy lifting junk removal</li>
+              <li>Sorting & responsible disposal junk removal</li>
+              <li>On-site recycling when possible junk removal</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:14px">
+            <a class="card-cta" href="#contact" style="width:100%;display:block;text-align:center">Schedule Pickup junk removal</a>
+          </div>
+
+          <div class="testimonials" style="margin-top:14px">
+            <div class="test">
+              <div style="font-weight:700">"Lightning fast junk removal — excellent crew junk removal"</div>
+              <div style="color:var(--muted);font-size:13px">— Rasa K., Vilnius junk removal</div>
+            </div>
+            <div class="test">
+              <div style="font-weight:700">"Eco-friendly junk removal & professional junk removal"</div>
+              <div style="color:var(--muted);font-size:13px">— Tomas L., Kaunas junk removal</div>
+            </div>
+          </div>
+        </div>
+      </aside>
     </section>
 
-    <section class="stats-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="stat-card animate-on-scroll">
-                        <div class="stat-number">10,000+</div>
-                        <p>AI-Optimized Cleanups</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-card animate-on-scroll">
-                        <div class="stat-number">99%</div>
-                        <p>Customer Satisfaction</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-card animate-on-scroll">
-                        <div class="stat-number">24/7</div>
-                        <p>AI Monitoring</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-card animate-on-scroll">
-                        <div class="stat-number">85%</div>
-                        <p>Cost Savings</p>
-                    </div>
-                </div>
-            </div>
+    <section id="services" class="section">
+      <div>
+        <h2 style="margin-top:0" class="fade-up">Our Services junk removal</h2>
+        <p style="color:var(--muted);margin-top:6px" class="fade-up">Tailored pickup and disposal solutions with smart logistics and recycling-first approach junk removal.</p>
+
+        <div class="cards fade-up stagger-1" style="margin-top:18px">
+          <div class="service">
+            <h3>Home Junk Removal junk removal</h3>
+            <p>Dismantle & remove furniture, appliances, mattresses, renovation debris — fast and tidy junk removal.</p>
+          </div>
+
+          <div class="service">
+            <h3>Commercial Cleanouts junk removal</h3>
+            <p>Office, retail and warehouse clearance with scalable teams and evening/weekend options junk removal.</p>
+          </div>
+
+          <div class="service">
+            <h3>Estate & Hoarder Cleanouts junk removal</h3>
+            <p>Compassionate, thorough cleanouts with careful sorting and secure disposal junk removal.</p>
+          </div>
+
+          <div class="service">
+            <h3>Yard & Storm Debris junk removal</h3>
+            <p>Branches, soil, construction scraps and green waste — bagged or loose pickup available junk removal.</p>
+          </div>
         </div>
+      </div>
+
+      <aside class="aside fade-up stagger-3">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-size:13px;color:var(--muted)">Enterprise & recurring junk removal</div>
+            <div style="font-weight:800;font-size:20px">Business Plans junk removal</div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px">
+          <div style="display:flex;gap:10px;margin-bottom:10px">
+            <div style="flex:1;padding:12px;border-radius:10px;background:var(--card);border:1px solid var(--glass-border)">
+              <div style="font-weight:700">Starter junk removal</div><div style="color:var(--muted)">€99 / mo junk removal</div>
+            </div>
+            <div style="flex:1;padding:12px;border-radius:10px;background:var(--card);border:1px solid var(--glass-border)">
+              <div style="font-weight:700">Pro junk removal</div><div style="color:var(--muted)">€249 / mo junk removal</div>
+            </div>
+          </div>
+          <a class="btn-ghost" href="#contact">Contact Sales junk removal</a>
+        </div>
+      </aside>
     </section>
 
-    <section id="features" class="features-section">
-        <div class="container">
-            <h2 class="text-center mb-5 fw-bold">Cutting-Edge AI Features</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="feature-card animate-on-scroll">
-                        <i class="fas fa-brain feature-icon"></i>
-                        <h4>Smart Route Optimization</h4>
-                        <p>AI algorithms calculate the most efficient routes, reducing fuel consumption by 30% and delivery time by 50%.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-card animate-on-scroll">
-                        <i class="fas fa-chart-line feature-icon"></i>
-                        <h4>Predictive Analytics</h4>
-                        <p>Machine learning predicts demand patterns and optimizes inventory for maximum efficiency.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-card animate-on-scroll">
-                        <i class="fas fa-recycle feature-icon"></i>
-                        <h4>Eco-Intelligence</h4>
-                        <p>Advanced sorting AI maximizes recycling rates to 95%, minimizing environmental impact.</p>
-                    </div>
-                </div>
-            </div>
+    <section id="how" class="section" style="grid-template-columns:1fr">
+      <div class="fade-up">
+        <h2>How It Works junk removal</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px">
+          <div style="padding:14px;border-radius:12px;background:var(--card);border:1px solid var(--glass-border)">
+            <div style="font-weight:700">1. Book Online junk removal</div>
+            <div style="color:var(--muted);margin-top:6px">Choose pickup time & provide item details junk removal.</div>
+          </div>
+          <div style="padding:14px;border-radius:12px;background:var(--card);border:1px solid var(--glass-border)">
+            <div style="font-weight:700">2. We Arrive junk removal</div>
+            <div style="color:var(--muted);margin-top:6px">Trained crew handles heavy lifting and cleanup junk removal.</div>
+          </div>
+          <div style="padding:14px;border-radius:12px;background:var(--card);border:1px solid var(--glass-border)">
+            <div style="font-weight:700">3. Responsible Disposal junk removal</div>
+            <div style="color:var(--muted);margin-top:6px">Materials are sorted for recycling and donation junk removal.</div>
+          </div>
+          <div style="padding:14px;border-radius:12px;background:var(--card);border:1px solid var(--glass-border)">
+            <div style="font-weight:700">4. Invoice & Feedback junk removal</div>
+            <div style="color:var(--muted);margin-top:6px">Transparent final cost and quick survey junk removal.</div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section class="urgency-banner">
-        <div class="container">
-            <h3>⚡ Limited Time: Save 30% on AI-Optimized Service!</h3>
-            <p>Offer expires in 48 hours. Don't miss out on revolutionary junk removal technology.</p>
+    <section id="contact" class="section" style="grid-template-columns:1fr 360px">
+      <div class="fade-up">
+        <h2>Contact & Bookings junk removal</h2>
+        <p style="color:var(--muted)">Fill this quick form and we'll reply within 1 business day (usually same day) junk removal.</p>
+
+        <form style="margin-top:12px" onsubmit="event.preventDefault(); handleSubmit();">
+          <div class="row">
+            <input id="name" placeholder="Full name junk removal" required />
+            <input id="phone" placeholder="Phone or WhatsApp junk removal" required />
+          </div>
+          <input id="email" type="email" placeholder="Email (optional) junk removal" />
+          <select id="service-type" aria-label="Service type junk removal">
+            <option>Home junk removal</option>
+            <option>Commercial cleanout junk removal</option>
+            <option>Yard waste junk removal</option>
+            <option>Estate cleanout junk removal</option>
+          </select>
+          <textarea id="message" placeholder="Describe items, size, any stairs or parking constraints junk removal"></textarea>
+          <div style="display:flex;gap:10px">
+            <button class="card-cta" type="submit">Request Quote junk removal</button>
+            <button type="button" class="btn-ghost" onclick="document.getElementById('name').value=''; document.getElementById('phone').value='';">Clear junk removal</button>
+          </div>
+          <div id="form-response" style="margin-top:10px;color:var(--muted);font-size:14px"></div>
+        </form>
+      </div>
+
+      <aside class="aside fade-up stagger-2">
+        <div style="font-weight:700">Quick Contacts junk removal</div>
+        <div style="color:var(--muted);margin-top:8px">Phone: +370 600 00000 junk removal</div>
+        <div style="color:var(--muted);margin-top:6px">Email: hello@quantumjunk.example junk removal</div>
+
+        <div style="margin-top:12px">
+          <div style="font-weight:700">Service Area junk removal</div>
+          <div style="color:var(--muted);margin-top:6px">Vilnius • Kaunas • Klaipėda • Panevėžys junk removal</div>
         </div>
+
+        <div style="margin-top:12px">
+          <a class="card-cta" href="tel:+37060000000">Call Now junk removal</a>
+        </div>
+      </aside>
     </section>
 
-    <section id="testimonials" class="testimonial-section">
-        <div class="container">
-            <h2 class="text-center mb-5 fw-bold">What Our Customers Say</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card animate-on-scroll">
-                        <div class="stars">★★★★★</div>
-                        <p>"The AI system predicted exactly when I'd need service. Arrived before I even called! Revolutionary."</p>
-                        <cite class="fw-bold">- Tech Entrepreneur, Vilnius</cite>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card animate-on-scroll">
-                        <div class="stars">★★★★★</div>
-                        <p>"Saved 40% on my cleanup costs thanks to their smart pricing AI. Incredible technology."</p>
-                        <cite class="fw-bold">- Startup Founder, Kaunas</cite>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card animate-on-scroll">
-                        <div class="stars">★★★★★</div>
-                        <p>"The eco-AI sorted my waste perfectly. 100% recycling rate. Future of waste management."</p>
-                        <cite class="fw-bold">- Environmental Consultant, Klaipėda</cite>
-                    </div>
-                </div>
-            </div>
+    <footer>
+      <div class="f-wrap">
+        <div class="f-col">
+          <div class="f-title">Quantum Junk junk removal</div>
+          <div style="color:var(--muted);font-size:14px">Modern, eco-first junk removal with tech-enabled logistics junk removal.</div>
         </div>
-    </section>
 
-    <section id="blog" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5 fw-bold">AI-Generated Insights</h2>
-            <p class="text-center lead">Our advanced AI continuously analyzes market trends and generates cutting-edge content.</p>
-            <div class="text-center">
-                <a href="/test-seo-site/_posts/" class="btn-custom">Explore AI Insights</a>
-            </div>
+        <div class="f-col">
+          <div class="f-title">Company junk removal</div>
+          <div class="f-list">
+            <a href="#services">Services junk removal</a>
+            <a href="#how">How it works junk removal</a>
+            <a href="#">Careers junk removal</a>
+          </div>
         </div>
-    </section>
 
-    <section id="cta" class="cta-section">
-        <div class="container">
-            <h2 class="mb-4 fw-bold">Experience the AI Revolution</h2>
-            <p class="lead mb-5">Get your FREE AI-powered quote in under 30 seconds. No commitment required.</p>
-            <div class="cta-form">
-                <h4 class="text-dark mb-4">Instant AI Quote Calculator</h4>
-                <form id="quoteForm">
-                    <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Your Name" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="tel" class="form-control" placeholder="Phone Number" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="email" class="form-control" placeholder="Email Address" required>
-                    </div>
-                    <div class="mb-3">
-                        <select class="form-control" required>
-                            <option value="">Select Service Type</option>
-                            <option value="furniture">Furniture Removal</option>
-                            <option value="appliance">Appliance Disposal</option>
-                            <option value="yard">Yard Waste Cleanup</option>
-                            <option value="full">Full House Cleanup</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn-custom w-100 py-3">🚀 Get AI Quote Instantly</button>
-                </form>
-                <p class="text-muted mt-3 small">🔒 Secure & Private • ⚡ Instant Results • 📞 No Spam</p>
-            </div>
+        <div class="f-col">
+          <div class="f-title">Legal junk removal</div>
+          <div class="f-list">
+            <a href="#">Privacy junk removal</a>
+            <a href="#">Terms junk removal</a>
+          </div>
         </div>
-    </section>
-    </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5 class="fw-bold">Quick Junk AI</h5>
-                    <p>Revolutionary AI-powered waste management. Transforming the industry with intelligent solutions.</p>
-                    <div class="mt-3">
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5 class="fw-bold">AI Features</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Smart Route Optimization</a></li>
-                        <li><a href="#" class="text-white">Predictive Analytics</a></li>
-                        <li><a href="#" class="text-white">Eco-Intelligence</a></li>
-                        <li><a href="#" class="text-white">Real-time Monitoring</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5 class="fw-bold">Contact</h5>
-                    <p><i class="fas fa-phone me-2"></i>(555) 123-4567</p>
-                    <p><i class="fas fa-envelope me-2"></i>info@quickjunkai.com</p>
-                    <p><i class="fas fa-map-marker-alt me-2"></i>Vilnius, Lithuania</p>
-                </div>
-            </div>
-            <hr class="my-4">
-            <p class="text-center mb-0">&copy; 2025 Quick Junk AI. Powered by Advanced Artificial Intelligence.</p>
+        <div class="f-col">
+          <div class="f-title">Follow junk removal</div>
+          <div class="f-list">
+            <a href="#">LinkedIn junk removal</a>
+            <a href="#">Instagram junk removal</a>
+          </div>
         </div>
+      </div>
+
+      <div class="copyright">© <span id="year"></span> Quantum Junk junk removal. All rights reserved junk removal.</div>
     </footer>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Simple animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+  <script>
+    // small interactive bits
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, observerOptions);
+    // Reveal animation (simple)
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.fade-up').forEach((el, i) => {
+        el.style.animationDelay = (i * 80) + 'ms';
+        el.classList.add('visible');
+      });
+    });
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
+    function handleSubmit(){
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service-type').value;
+      const message = document.getElementById('message').value.trim();
+      const resp = document.getElementById('form-response');
 
-        // Form submission
-        document.getElementById('quoteForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you! Our AI is calculating your quote. We\'ll contact you within 5 minutes.');
-        });
-    </script>
+      if(!name || !phone){
+        resp.textContent = "Įveskite vardą ir telefono numerį junk removal.";
+        return;
+      }
+
+      // Simulated submit (replace with real API endpoint)
+      const payload = { name, phone, service, message, ts: new Date().toISOString() };
+      console.info("Submitting contact request:", payload);
+
+      resp.style.color = '#9aa4c0';
+      resp.textContent = "Užklausa išsiųsta junk removal. Mes su jumis susisieksime per 24 valandas junk removal.";
+    }
+  </script>
 </body>
 </html>
