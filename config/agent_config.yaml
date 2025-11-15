@@ -1,0 +1,70 @@
+agents:
+  - name: orchestrator
+    type: llm_agent
+    model: gemini-2.0-flash-exp
+    system_prompt: "Orchestrate SEO automation with competitor monitoring and website integration."
+    tools: ["rank_checker", "content_generator", "uploader", "competitor_monitor", "website_api"]
+    memory: true
+
+  - name: rank_checker
+    type: workflow_agent
+    workflow_type: loop
+    tools: ["geo_search"]
+    schedule: "daily"
+
+  - name: content_generator
+    type: llm_agent
+    model: gemini-2.0-flash-exp
+    system_prompt: "Generate SEO-optimized blog posts using competitor insights."
+    tools: ["firecrawl", "gemini_llm"]
+    memory: true
+
+  - name: uploader
+    type: function_tool
+    function: upload_content
+    tools: ["github_api", "website_api"]
+
+  - name: competitor_monitor
+    type: llm_agent
+    model: gemini-2.0-flash-exp
+    system_prompt: "Monitor competitors in junk removal niche for SEO strategies and insights."
+    tools: ["competitor_tool"]
+    memory: true
+    competitors: ["https://example-junk-removal.com", "https://competitor-site.com"]
+
+  - name: safety
+    type: built_in
+    features: ["logging", "evaluation"]
+
+tools:
+  - name: geo_search
+    type: custom
+    description: "Search for geo-specific rankings"
+
+  - name: firecrawl
+    type: third_party
+    provider: firecrawl
+
+  - name: gemini_llm
+    type: model
+    provider: google
+
+  - name: github_api
+    type: third_party
+    provider: github
+    repo: manupupww/test-seo-site
+
+  - name: competitor_tool
+    type: custom
+    description: "Monitor competitor sites and SERPs"
+
+  - name: website_api
+    type: custom
+    description: "API for website updates and blog uploads"
+
+runtime:
+  mode: local
+  evaluation:
+    criteria:
+      - rank_improvement
+      - content_quality
