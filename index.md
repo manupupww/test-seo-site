@@ -13,7 +13,7 @@ layout: default
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; padding-top: 80px; }
         .hero { background: linear-gradient(135deg, rgba(26, 35, 126, 0.9), rgba(63, 81, 181, 0.9)), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center; background-size: cover; color: white; padding: 120px 0; position: relative; }
         .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); }
         .hero-content { position: relative; z-index: 2; }
@@ -29,6 +29,7 @@ layout: default
         .cta-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 80px 0; }
         .feature-icon { font-size: 3rem; color: #FF6B35; margin-bottom: 20px; }
         .navbar { background: rgba(255,255,255,0.95) !important; backdrop-filter: blur(10px); }
+        .container { max-width: 1200px; }
         .navbar-brand { font-weight: 700; font-size: 1.5rem; color: #1a1a1a !important; }
     </style>
 </head>
