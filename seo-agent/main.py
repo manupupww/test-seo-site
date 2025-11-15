@@ -6,11 +6,10 @@ def run():
     user_prompt = (
         f"Analyze the following website for SEO and suggest the most important improvements:\nURL: {url}\n"
     )
-
-    # For synchronous (non-streaming) agent use:
-    result = agent.invoke({"messages": [{"role": "user", "content": user_prompt}]})
+    messages = [{"role": "user", "content": user_prompt}]
+    result = agent.invoke({"messages": messages})
     print("\nSEO Analysis Report:\n")
-    print(result["messages"][-1]["content"])
+    print(result["content"])
 
 if __name__ == "__main__":
     run()
