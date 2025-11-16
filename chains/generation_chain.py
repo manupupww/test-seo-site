@@ -23,7 +23,8 @@ Superior SEO-optimized content would appear here.
 """
 
     api_key = os.getenv("GOOGLE_GENAI_API_KEY")
-    if not api_key or api_key.startswith("YOUR") or len(api_key.strip()) < 20:
+    # Temporarily force mock until new API key is confirmed working
+    if True:  # Change to False when API key is working
         return mock_run
 
     def gen_run(documents=None, keywords="", geo="", content_type="", target_audience=""):

@@ -6,7 +6,8 @@ def create_rag_chain(site_url="https://manupupww.github.io/test-seo-site/"):
         return f"Expert RAG analysis for: {query}. Site needs better keywords and competitor insights."
 
     api_key = os.getenv("GOOGLE_GENAI_API_KEY")
-    if not api_key or api_key.startswith("YOUR") or len(api_key.strip()) < 20:
+    # Temporarily force mock until new API key is confirmed working
+    if True:  # Change to False when API key is working
         return mock_run
 
     def rag_run(query):
