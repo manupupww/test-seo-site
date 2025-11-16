@@ -6,4 +6,7 @@ services:
       - .env
     volumes:
       - ./logs:/app/logs
+      - ./memory.json:/app/memory.json
+      - ./agent.log:/app/agent.log
     restart: unless-stopped
+    command: ["sh", "-c", "cron && tail -f /dev/null"]

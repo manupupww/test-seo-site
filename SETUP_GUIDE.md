@@ -25,16 +25,21 @@ Fill in your real API keys in `.env` file (never commit this file).
 ### 3. Test Locally
 Run `python main.py` to test if everything works.
 
-### 4. Deploy to Render (24/7)
-1. Go to https://dashboard.render.com
-2. Create new "Web Service"
-3. Connect GitHub repo: `manupupww/test-seo-site` (your website repo)
+### 4. Deploy to Render (24/7 net kai kompiuteris išjungtas)
+1. Eikite į https://dashboard.render.com
+2. Sukurkite naują "Web Service"
+3. Prijunkite GitHub repo: `manupupww/test-seo-site`
 4. Runtime: Docker
 5. Branch: main
-6. Build Command: (leave empty)
+6. Build Command: (palikite tuščią)
 7. Start Command: `sh -c "cron && tail -f /dev/null"`
-8. Environment: Add variables from .env
+8. Environment: Pridėkite kintamuosius iš .env failo:
+   - GOOGLE_GENAI_API_KEY
+   - TAVILY_API_KEY
+   - FIRECRAWL_API_KEY
+   - GITHUB_TOKEN
 9. Deploy
+10. Agentas automatiškai veiks kas valandą debesyje
 
 ### 5. Verify
 - Check Render logs for agent activity

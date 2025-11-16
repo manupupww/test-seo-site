@@ -30,9 +30,21 @@ This project implements an expert-level AI agent that surpasses human SEO superv
 5. Logs: `docker-compose logs`
 6. Stop: `docker-compose down`
 
-## Cloud Deployment (Optional)
-- Push to Google Cloud Run for serverless 24/7.
-- Use Vertex AI for ADK-native deployment.
+## Cloud Deployment (24/7 kai kompiuteris išjungtas)
+Rekomenduojama naudoti Render.com:
+1. Push kodą į GitHub
+2. Sukurkite Render Web Service
+3. Prijunkite GitHub repo
+4. Runtime: Docker
+5. Start Command: `sh -c "cron && tail -f /dev/null"`
+6. Pridėkite API keys į Environment
+7. Deploy - agentas veiks 24/7 debesyje
+
+## Local Docker (testavimui)
+```bash
+docker-compose up -d
+```
+Logs: `docker-compose logs -f`
 
 ## Architecture
 - **Agents**: orchestrator.py, rank_checker.py, content_generator.py, competitor_monitor.py
