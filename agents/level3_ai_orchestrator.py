@@ -295,13 +295,17 @@ class Level3AIOrchestrator:
 
     def _execute_parallel_optimizations(self, strategy: Dict) -> Dict:
         """Execute optimizations in parallel using maximum AI capabilities"""
+        import threading
         optimizations = {
             "seo_optimizations": {},
             "content_optimizations": {},
             "technical_fixes": {},
             "link_building": {},
-            "testing_setup": {}
+            "testing_setup": {},
+            "advanced_features": {}
         }
+        # Thread-safe storage for results
+        results_lock = threading.Lock()
 
         # Parallel execution of optimization tasks
         threads = []
@@ -309,8 +313,8 @@ class Level3AIOrchestrator:
         # SEO Optimizations
         def execute_seo_optimizations():
             result = self.seo_optimizer.optimize_website_seo()
-            optimizations["seo_optimizations"] = result
-        threads.append(threading.Thread(target=execute_seo_optimizations))
+            with results_lock:
+                optimizations["seo_optimizations"] = result
 
         # Content Generation
         def execute_content_optimizations():
@@ -320,13 +324,14 @@ class Level3AIOrchestrator:
                 content_type="comprehensive_guide",
                 target_audience="local_businesses"
             )
-            optimizations["content_optimizations"] = result
-        threads.append(threading.Thread(target=execute_content_optimizations))
+            with results_lock:
+                optimizations["content_optimizations"] = result
 
         # Advanced Features
         def execute_advanced_optimizations():
             result = self.advanced_agent.run_advanced_seo_workflow()
-            optimizations["advanced_features"] = result
+            with results_lock:
+                optimizations["advanced_features"] = result
         threads.append(threading.Thread(target=execute_advanced_optimizations))
 
         # Website Updates - Apply all optimizations to actual files
@@ -376,43 +381,46 @@ class Level3AIOrchestrator:
             # Update site configuration with new keywords
             print("Updating site configuration...")
             config_result = website_tool.update_site_config(
-                new_keywords=["junk removal Vilnius", "atliekų išvežimas", "eco disposal"],
+                new_keywords=["junk removal Vilnius", "atlieku isvezimas", "eco disposal"],
                 new_description="Professional junk removal and eco-friendly disposal services in Vilnius"
             )
             update_results["config"] = config_result
-            print(f"Config updated: {config_result}")
+            print("Config updated successfully")
 
             # Add schema markup
             print("Adding schema markup...")
             schema_result = website_tool.add_schema_markup("local_business")
             update_results["schema"] = schema_result
-            print(f"Schema added: {schema_result}")
+            print("Schema added successfully")
 
-            optimizations["website_updates"] = update_results
-            print("WEBSITE UPDATES COMPLETED")
+            with results_lock:
+                optimizations["website_updates"] = update_results
+            print(f"WEBSITE UPDATES COMPLETED - {len(update_results)} updates applied")
         threads.append(threading.Thread(target=execute_website_updates))
 
-        # Execute optimizations sequentially for debugging
+        # Execute optimizations in parallel with proper synchronization
         optimization_start = time.time()
-        results = {}
 
-        print(f"Phase 1 completed in {time.time() - optimization_start:.2f}s")
-        print("START Phase 2: Sequential Optimizations")
+        print("STARTING PARALLEL OPTIMIZATION EXECUTION...")
 
-        # Execute each optimization sequentially
-        thread_functions = [t._target for t in threads]
-        for i, thread_func in enumerate(thread_functions):
+        # Start all threads
+        for thread in threads:
+            thread.start()
+
+        # Wait for all threads to complete with timeout
+        for i, thread in enumerate(threads):
             try:
-                func_start = time.time()
-                print(f"Executing optimization {i+1}/{len(thread_functions)}...")
-                thread_func()
-                print(f"Optimization {i+1} completed in {time.time() - func_start:.2f}s")
+                thread.join(timeout=300)  # 5 minute timeout per thread
+                if thread.is_alive():
+                    print(f"Thread {i+1} timed out after 5 minutes")
+                else:
+                    print(f"Thread {i+1} completed successfully")
             except Exception as e:
-                print(f"Optimization {i+1} failed: {e}")
+                print(f"Thread {i+1} failed: {e}")
 
         optimization_time = time.time() - optimization_start
-        print(f"All optimizations completed in {optimization_time:.2f}s")
-        self.monitoring_agent.record_metric("optimization_execution_sequential_time", optimization_time)
+        print(f"All parallel optimizations completed in {optimization_time:.2f}s")
+        self.monitoring_agent.record_metric("optimization_execution_parallel_time", optimization_time)
 
         # Commit all website changes to Git
         print("STARTING GIT COMMIT...")

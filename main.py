@@ -51,15 +51,23 @@ def main():
     if github_token and github_token != "mock_token":
         try:
             import subprocess
+            # Pull latest changes first to avoid conflicts
+            subprocess.run(["git", "pull", "--no-edit"], check=True)
             # Add all changes
             subprocess.run(["git", "add", "."], check=True)
-            # Commit with timestamp
-            commit_msg = f"AI Agent SEO Optimization - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
-            subprocess.run(["git", "commit", "-m", commit_msg], check=True)
-            # Push to GitHub
-            subprocess.run(["git", "push", "origin", "main"], check=True)
-            logging.info("Successfully committed and pushed changes to GitHub")
-            print("Changes committed and pushed to GitHub")
+            # Check if there are changes to commit
+            result = subprocess.run(["git", "diff", "--cached", "--quiet"], capture_output=True)
+            if result.returncode != 0:  # There are changes
+                # Commit with timestamp
+                commit_msg = f"AI Agent SEO Optimization - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
+                subprocess.run(["git", "commit", "-m", commit_msg], check=True)
+                # Push to GitHub
+                subprocess.run(["git", "push", "origin", "main"], check=True)
+                logging.info("Successfully committed and pushed changes to GitHub")
+                print("Changes committed and pushed to GitHub")
+            else:
+                logging.info("No changes to commit")
+                print("No changes to commit")
         except Exception as e:
             logging.error(f"Failed to commit/push changes: {e}")
             print(f"Failed to commit/push changes: {e}")

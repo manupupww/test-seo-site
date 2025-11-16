@@ -268,5 +268,65 @@
     },
     "winner": null,
     "confidence_level": 0
+  },
+  "content_test_20251116_162906": {
+    "test_id": "content_test_20251116_162906",
+    "page_url": "/index.html",
+    "element_type": "description",
+    "variants": {
+      "A": {
+        "description": "Professional junk removal and eco-friendly disposal services in Vilnius. Since 2015 - trusted by 500+ customers."
+      },
+      "B": {
+        "description": "Fast, reliable junk removal in Vilnius. Eco-friendly disposal, free quotes, same-day service."
+      }
+    },
+    "traffic_split": 0.5,
+    "status": "active",
+    "created_at": "2025-11-16T16:29:06.085977",
+    "stats": {
+      "A": {
+        "views": 0,
+        "conversions": 0,
+        "ctr": 0
+      },
+      "B": {
+        "views": 0,
+        "conversions": 0,
+        "ctr": 0
+      }
+    },
+    "winner": null,
+    "confidence_level": 0
+  },
+  "content_test_20251116_162938": {
+    "test_id": "content_test_20251116_162938",
+    "page_url": "/index.html",
+    "element_type": "description",
+    "variants": {
+      "A": {
+        "description": "Professional junk removal and eco-friendly disposal services in Vilnius. Since 2015 - trusted by 500+ customers."
+      },
+      "B": {
+        "description": "Fast, reliable junk removal in Vilnius. Eco-friendly disposal, free quotes, same-day service."
+      }
+    },
+    "traffic_split": 0.5,
+    "status": "active",
+    "created_at": "2025-11-16T16:29:38.047100",
+    "stats": {
+      "A": {
+        "views": 0,
+        "conversions": 0,
+        "ctr": 0
+      },
+      "B": {
+        "views": 0,
+        "conversions": 0,
+        "ctr": 0
+      }
+    },
+    "winner": null,
+    "confidence_level": 0
   }
 }
