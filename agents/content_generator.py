@@ -243,7 +243,7 @@ class ContentGeneratorAgent:
         return [f"best {kw}" for kw in primary_keywords] + [f"professional {kw}" for kw in primary_keywords]
 
     def _generate_long_tail_keywords(self, keywords, geo):
-        return [f"{kw} services in {geo}", f"how to choose {kw} company", f"{kw} cost in {geo}"]
+        return [f"{kw} services in {geo}" for kw in keywords] + [f"how to choose {kw} company" for kw in keywords] + [f"{kw} cost in {geo}" for kw in keywords]
 
     def _analyze_search_intent(self, keywords):
         return {"primary": "commercial", "secondary": "informational", "user_journey": "awareness"}

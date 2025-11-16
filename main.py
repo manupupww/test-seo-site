@@ -91,7 +91,7 @@ def update_dashboard(workflow_result):
         html = f.read()
 
     # Replace placeholders
-    html = html.replace('{{last_activity}}', workflow_result)
+    html = html.replace('{{last_activity}}', str(workflow_result))
     html = html.replace('{{recent_activities}}', '<li>Generated new blog post</li><li>Checked rankings</li><li>Monitored competitors</li><li>Posted to social media</li>')
     html = html.replace('{{current_rank}}', str(current_rank))
     html = html.replace('{{total_posts}}', str(total_posts))
