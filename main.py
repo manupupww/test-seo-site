@@ -3,7 +3,7 @@ import logging
 import json
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
-from agents.orchestrator import OrchestratorAgent
+from agents.level3_ai_orchestrator import Level3AIOrchestrator
 from agents.rank_checker import RankCheckerAgent
 from agents.content_generator import ContentGeneratorAgent
 from agents.competitor_monitor import CompetitorMonitorAgent
@@ -38,29 +38,20 @@ def main():
     # Log available keys (without exposing them)
     logging.info(f"API Keys status - Google: {'YES' if google_key else 'NO'}, Tavily: {'YES' if tavily_key else 'NO'}, Firecrawl: {'YES' if firecrawl_key else 'NO'}, GitHub: {'YES' if github_token else 'NO'}")
 
-    # Initialize agents
-    rank_checker = RankCheckerAgent(tavily_key)
-    content_gen = ContentGeneratorAgent()
-    competitor_monitor = CompetitorMonitorAgent(firecrawl_key, tavily_key, ["https://example-competitor.com"])
-    website_tool = WebsiteAPITool("https://api.github.com/repos/manupupww/test-seo-site/contents", github_token)
+    # Level 3 AI Orchestrator - Maximum Capabilities
+    print("🚀 Initializing Level 3 AI Orchestrator with maximum capabilities...")
+    orchestrator = Level3AIOrchestrator()
 
-    # Orchestrator - use mock keys if not available (for Railway testing)
-    orchestrator = OrchestratorAgent(
-        competitor_keys={
-            "firecrawl_key": firecrawl_key or "mock_key",
-            "tavily_key": tavily_key or "mock_key",
-            "competitors": ["https://example-competitor.com"]
-        },
-        website_api_config={
-            "api_url": "https://api.github.com/repos/manupupww/test-seo-site/contents",
-            "api_key": github_token or "mock_token"
-        }
-    )
+    # Run maximum AI workflow
+    result = orchestrator.run_maximum_ai_workflow()
+    logging.info(f"Level 3 AI Workflow result: {result}")
+    print(f"🎯 Level 3 AI Workflow completed: {result.get('status', 'Unknown')}")
 
-    # Run workflow
-    result = orchestrator.run_workflow()
-    logging.info(f"Workflow result: {result}")
-    print(f"Workflow result: {result}")
+    # Performance summary
+    metrics = result.get('performance_metrics', {})
+    print(f"📊 AI Utilization: {metrics.get('ai_utilization_achieved', '0%')}")
+    print(f"⚡ Optimizations Applied: {metrics.get('optimizations_applied', 0)}")
+    print(f"🧠 Learning Insights: {metrics.get('learning_insights_generated', 0)}")
 
     # For Railway deployment, commit changes back to GitHub if we have a token
     if deployment_mode == "railway" and github_token and github_token != "mock_token":
