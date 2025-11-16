@@ -62,7 +62,7 @@ class MaximumQualitySEOAgent:
     def _cleanup(self):
         """Clean up resources"""
         if hasattr(self, 'executor'):
-            self.executor.shutdown(wait=True, timeout=30)
+            self.executor.shutdown(wait=True)
         logger.info("Agent cleanup completed")
 
     def _validate_environment(self) -> bool:
