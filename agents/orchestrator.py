@@ -9,6 +9,7 @@ from agents.analytics_agent import AnalyticsAgent
 from agents.seo_optimizer_agent import SEOOptimizerAgent
 from agents.scheduling_agent import SchedulingAgent
 from agents.geo_agent import GeoAgent
+from agents.advanced_seo_agent import AdvancedSEOAgent
 from tools.website_api_tool import WebsiteAPITool
 
 class OrchestratorAgent:
@@ -23,6 +24,7 @@ class OrchestratorAgent:
         self.seo_optimizer = SEOOptimizerAgent(competitor_keys.get("firecrawl_key", "mock_key"), website_api_config.get("api_key", "mock_token"))
         self.scheduling_agent = SchedulingAgent()
         self.geo_agent = GeoAgent(competitor_keys.get("tavily_key", "mock_key"))
+        self.advanced_agent = AdvancedSEOAgent()
         self.website_tool = WebsiteAPITool(**website_api_config)
 
     def run_workflow(self):
@@ -75,6 +77,10 @@ class OrchestratorAgent:
                 # Get geo optimization data for location-based content
                 geo_data = self.geo_agent.optimize_for_location("Vilnius", "junk removal")
                 print(f"Geo Optimization: {geo_data}")
+
+                # Run advanced SEO workflow (monitoring, A/B testing, voice search, competitor intelligence)
+                advanced_results = self.advanced_agent.run_advanced_seo_workflow()
+                print(f"Advanced SEO Analysis: {len(advanced_results.get('recommendations', []))} recommendations generated")
 
                 # Analyze site with competitor and market data
                 analysis = self.rag_chain(f"As expert SEO supervisor, analyze current SEO gaps and opportunities. {insights_summary}")
