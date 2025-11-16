@@ -6,14 +6,13 @@ def create_rag_chain(site_url="https://manupupww.github.io/test-seo-site/"):
         return f"Expert RAG analysis for: {query}. Site needs better keywords and competitor insights."
 
     api_key = os.getenv("GOOGLE_GENAI_API_KEY")
-    # Temporarily force mock until new API key is confirmed working
-    if True:  # Change to False when API key is working
+    if not api_key or api_key.startswith("YOUR") or len(api_key.strip()) < 20:
         return mock_run
 
     def rag_run(query):
         try:
             # Direct Gemini API call for RAG-like analysis
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key={api_key}"
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
             prompt = f"As an expert SEO supervisor, analyze the site at {site_url} for SEO gaps based on query: {query}. Provide detailed insights."
             data = {
                 "contents": [{"parts": [{"text": prompt}]}]

@@ -23,14 +23,13 @@ Superior SEO-optimized content would appear here.
 """
 
     api_key = os.getenv("GOOGLE_GENAI_API_KEY")
-    # Temporarily force mock until new API key is confirmed working
-    if True:  # Change to False when API key is working
+    if not api_key or api_key.startswith("YOUR") or len(api_key.strip()) < 20:
         return mock_run
 
     def gen_run(documents=None, keywords="", geo="", content_type="", target_audience=""):
         try:
             # Direct Gemini API call for content generation
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key={api_key}"
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
             context = str(documents) if documents else "No analysis provided"
             prompt = f"""As an expert SEO supervisor better than any human, generate a high-quality, SEO-optimized blog post based on analysis: {context}
 Target keywords: {keywords}

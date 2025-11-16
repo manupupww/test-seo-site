@@ -304,7 +304,7 @@ seo:
         if not api_key or api_key.startswith("YOUR"):
             return self._generate_mock_faq(industry, location)
 
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key={api_key}"
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
         prompt = f"""Generate 10 comprehensive FAQ questions and answers for a {industry} business in {location}.
 
 Requirements:
