@@ -329,21 +329,105 @@ class Level3AIOrchestrator:
             optimizations["advanced_features"] = result
         threads.append(threading.Thread(target=execute_advanced_optimizations))
 
-        # Use performance optimizer for parallel execution
-        def execute_optimization_tasks():
-            # Start all threads
-            for thread in threads:
-                thread.start()
+        # Website Updates - Apply all optimizations to actual files
+        def execute_website_updates():
+            print("STARTING WEBSITE UPDATES...")
+            from tools.website_api_tool import WebsiteAPITool
+            website_tool = WebsiteAPITool()
 
-            # Wait for completion with timeout
-            for thread in threads:
-                thread.join(timeout=600)  # 10 minute timeout for optimizations
+            update_results = {}
 
-        # Execute with performance monitoring
-        start_time = time.time()
-        execute_optimization_tasks()
-        optimization_time = time.time() - start_time
-        self.monitoring_agent.record_metric("optimization_execution_parallel_time", optimization_time)
+            print(f"Available optimizations keys: {list(optimizations.keys())}")
+
+            # Create blog post from generated content
+            if "content_optimizations" in optimizations:
+                content_data = optimizations["content_optimizations"]
+                print(f"Content data type: {type(content_data)}")
+                if isinstance(content_data, dict):
+                    print(f"Content data keys: {list(content_data.keys())}")
+                    if "primary_content" in content_data:
+                        print("Found primary_content, creating blog post...")
+                        # Extract keywords from strategy if available
+                        keywords = content_data.get("strategy", {}).get("primary_keywords", ["seo"])
+                        blog_result = website_tool.create_blog_post(
+                            title=f"Expert SEO Guide: {keywords[0] if keywords else 'SEO'}",
+                            content=content_data["primary_content"],
+                            keywords=keywords,
+                            category="seo"
+                        )
+                        update_results["blog_post"] = blog_result
+                        print(f"Blog post created: {blog_result}")
+                    else:
+                        print("No primary_content found in content_data")
+                else:
+                    print(f"Content data is not a dict: {content_data}")
+            else:
+                print("No content_optimizations found")
+
+            # Generate FAQ content
+            print("Generating FAQ content...")
+            faq_result = website_tool.generate_faq_content(
+                keywords=["junk removal", "disposal", "Vilnius", "eco-friendly"],
+                industry="junk removal"
+            )
+            update_results["faq"] = faq_result
+            print(f"FAQ generated: {faq_result}")
+
+            # Update site configuration with new keywords
+            print("Updating site configuration...")
+            config_result = website_tool.update_site_config(
+                new_keywords=["junk removal Vilnius", "atliekų išvežimas", "eco disposal"],
+                new_description="Professional junk removal and eco-friendly disposal services in Vilnius"
+            )
+            update_results["config"] = config_result
+            print(f"Config updated: {config_result}")
+
+            # Add schema markup
+            print("Adding schema markup...")
+            schema_result = website_tool.add_schema_markup("local_business")
+            update_results["schema"] = schema_result
+            print(f"Schema added: {schema_result}")
+
+            optimizations["website_updates"] = update_results
+            print("WEBSITE UPDATES COMPLETED")
+        threads.append(threading.Thread(target=execute_website_updates))
+
+        # Execute optimizations sequentially for debugging
+        optimization_start = time.time()
+        results = {}
+
+        print(f"Phase 1 completed in {time.time() - optimization_start:.2f}s")
+        print("START Phase 2: Sequential Optimizations")
+
+        # Execute each optimization sequentially
+        thread_functions = [t._target for t in threads]
+        for i, thread_func in enumerate(thread_functions):
+            try:
+                func_start = time.time()
+                print(f"Executing optimization {i+1}/{len(thread_functions)}...")
+                thread_func()
+                print(f"Optimization {i+1} completed in {time.time() - func_start:.2f}s")
+            except Exception as e:
+                print(f"Optimization {i+1} failed: {e}")
+
+        optimization_time = time.time() - optimization_start
+        print(f"All optimizations completed in {optimization_time:.2f}s")
+        self.monitoring_agent.record_metric("optimization_execution_sequential_time", optimization_time)
+
+        # Commit all website changes to Git
+        print("STARTING GIT COMMIT...")
+        if optimizations.get("website_updates"):
+            print("Website updates found, committing changes...")
+            from tools.website_api_tool import WebsiteAPITool
+            website_tool = WebsiteAPITool()
+            commit_result = website_tool.commit_changes(
+                f"AI Agent Autonomous SEO Optimization - {len(optimizations.get('website_updates', {}))} updates applied"
+            )
+            optimizations["git_commit"] = commit_result
+            print(f"Git commit result: {commit_result}")
+        else:
+            print("No website updates found, skipping git commit")
+        print("GIT COMMIT PROCESS COMPLETED")
 
         return optimizations
 

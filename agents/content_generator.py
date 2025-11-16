@@ -106,7 +106,7 @@ class ContentGeneratorAgent:
         # Use existing generation chain with enhanced prompts
         analysis = self.rag_chain("Advanced SEO and content analysis for " + " ".join(strategy["primary_keywords"]))
 
-        content = self.gen_chain(
+        generated_content = self.gen_chain(
             documents=[{"page_content": analysis}],
             keywords=strategy["primary_keywords"] + strategy["long_tail_keywords"][:3],
             geo=strategy.get("geo", "Vilnius"),
@@ -114,7 +114,16 @@ class ContentGeneratorAgent:
             target_audience=strategy.get("target_audience", "general")
         )
 
-        return content
+        # Return just the generated content string
+        return generated_content
+
+    def _generate_content_variants_from_generated(self, generated_content, strategy):
+        """Generate content variants from generated content"""
+        return {
+            "primary": generated_content,
+            "variant_a": generated_content.replace("Expert", "Professional"),
+            "variant_b": generated_content.replace("SEO", "Search Engine Optimization")
+        }
 
     def _generate_alternative_variant(self, strategy, variant_type):
         """Generate alternative content variants"""
