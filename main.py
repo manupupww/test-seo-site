@@ -17,16 +17,26 @@ def main():
     # Load .env file
     load_dotenv()
 
+    # Check deployment mode
+    deployment_mode = os.getenv("DEPLOYMENT_MODE", "local")
+    update_frequency = os.getenv("UPDATE_FREQUENCY", "hourly")
+
+    logging.info(f"Deployment mode: {deployment_mode}, Update frequency: {update_frequency}")
+
     # Load keys from env
     google_key = os.getenv("GOOGLE_GENAI_API_KEY")
     tavily_key = os.getenv("TAVILY_API_KEY")
     firecrawl_key = os.getenv("FIRECRAWL_API_KEY")
     github_token = os.getenv("GITHUB_TOKEN")
 
-    if not all([google_key, tavily_key, firecrawl_key, github_token]):
-        logging.error("Missing API keys")
+    # For Railway deployment, allow missing keys initially (will use mock data)
+    if deployment_mode == "local" and not all([google_key, tavily_key, firecrawl_key, github_token]):
+        logging.error("Missing API keys in local mode")
         print("Missing API keys. Fill in .env file with your keys.")
         return
+
+    # Log available keys (without exposing them)
+    logging.info(f"API Keys status - Google: {'YES' if google_key else 'NO'}, Tavily: {'YES' if tavily_key else 'NO'}, Firecrawl: {'YES' if firecrawl_key else 'NO'}, GitHub: {'YES' if github_token else 'NO'}")
 
     # Initialize agents
     rank_checker = RankCheckerAgent(tavily_key)
@@ -34,10 +44,17 @@ def main():
     competitor_monitor = CompetitorMonitorAgent(firecrawl_key, tavily_key, ["https://example-competitor.com"])
     website_tool = WebsiteAPITool("https://api.github.com/repos/manupupww/test-seo-site/contents", github_token)
 
-    # Orchestrator
+    # Orchestrator - use mock keys if not available (for Railway testing)
     orchestrator = OrchestratorAgent(
-        competitor_keys={"firecrawl_key": firecrawl_key, "tavily_key": tavily_key, "competitors": ["https://example-competitor.com"]},
-        website_api_config={"api_url": "https://api.github.com/repos/manupupww/test-seo-site/contents", "api_key": github_token}
+        competitor_keys={
+            "firecrawl_key": firecrawl_key or "mock_key",
+            "tavily_key": tavily_key or "mock_key",
+            "competitors": ["https://example-competitor.com"]
+        },
+        website_api_config={
+            "api_url": "https://api.github.com/repos/manupupww/test-seo-site/contents",
+            "api_key": github_token or "mock_token"
+        }
     )
 
     # Run workflow
@@ -45,8 +62,26 @@ def main():
     logging.info(f"Workflow result: {result}")
     print(f"Workflow result: {result}")
 
-    # Update dashboard
-    update_dashboard(result)
+    # For Railway deployment, commit changes back to GitHub if we have a token
+    if deployment_mode == "railway" and github_token and github_token != "mock_token":
+        try:
+            import subprocess
+            # Add all changes
+            subprocess.run(["git", "add", "."], check=True)
+            # Commit with timestamp
+            commit_msg = f"AI Agent SEO Optimization - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
+            subprocess.run(["git", "commit", "-m", commit_msg], check=True)
+            # Push to GitHub
+            subprocess.run(["git", "push", "origin", "main"], check=True)
+            logging.info("Successfully committed and pushed changes to GitHub")
+            print("Changes committed and pushed to GitHub")
+        except Exception as e:
+            logging.error(f"Failed to commit/push changes: {e}")
+            print(f"Failed to commit/push changes: {e}")
+
+    # Update dashboard (only in local mode)
+    if deployment_mode == "local":
+        update_dashboard(result)
 
 def update_dashboard(workflow_result):
     # Read memory.json

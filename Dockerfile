@@ -22,5 +22,9 @@ RUN chmod 0644 /etc/cron.d/agent-cron && crontab /etc/cron.d/agent-cron
 # Create log directory
 RUN mkdir -p /app/logs
 
-# Start cron and keep container running
-CMD ["sh", "-c", "cron && tail -f /dev/null"]
+# Copy railway start script
+COPY railway_start.sh /app/railway_start.sh
+RUN chmod +x /app/railway_start.sh
+
+# Start with railway script or cron
+CMD ["/app/railway_start.sh"]
