@@ -8,13 +8,15 @@ def create_generation_chain():
             return f"Expert generated blog post with keywords: {keywords}, geo: {geo}. Superior content: {docs}"
         return mock_run
 
-    def gen_run(docs, keywords, geo):
+    def gen_run(documents=None, keywords="", geo="", content_type="", target_audience=""):
         # Direct Gemini API call for content generation
         url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key={api_key}"
-        context = str(docs) if docs else "No analysis provided"
+        context = str(documents) if documents else "No analysis provided"
         prompt = f"""As an expert SEO supervisor better than any human, generate a high-quality, SEO-optimized blog post based on analysis: {context}
         Target keywords: {keywords}
         Geo location: {geo}
+        Content type: {content_type}
+        Target audience: {target_audience}
         Make it engaging, rank-boosting, superior to human content. Include meta descriptions, headings, calls to action. Format as Jekyll blog post."""
         data = {
             "contents": [{"parts": [{"text": prompt}]}]

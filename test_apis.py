@@ -13,15 +13,10 @@ if google_key:
     try:
         import google.generativeai as genai
         genai.configure(api_key=google_key)
-        # List available models to find the correct one
-        models = genai.list_models()
-        model_names = [m.name for m in models if 'gemini' in m.name]
-        if model_names:
-            model = genai.GenerativeModel(model_names[0])
-            response = model.generate_content("Hello")
-            print("Google AI: Working")
-        else:
-            print("Google AI: No Gemini models available")
+        # Use a known working model
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        response = model.generate_content("Hello")
+        print("Google AI: Working")
     except Exception as e:
         print(f"Google AI: Failed - {str(e)[:100]}")
 
