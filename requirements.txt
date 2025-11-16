@@ -5,3 +5,4 @@ tavily-python
 firecrawl-py
 python-dotenv
 requests
+beautifulsoup4

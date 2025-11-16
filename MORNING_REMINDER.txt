@@ -1,0 +1,10 @@
+Labas rytas! Štai ką reikia padaryti ryte, kad patikrintumėte agento veikimą:
+
+1. Patikrinkite agent.log failą naujiems įrašams apie agento veiklą.
+2. Atidarykite dashboard.html naršyklėje ir peržiūrėkite statusą, metrikas, logus.
+3. Aplankykite https://manupupww.github.io/test-seo-site/ ir patikrinkite naujus blog įrašus.
+4. Patikrinkite memory.json failą dėl atnaujinto last_run laiko ir total_posts.
+5. Naudokite schtasks /query /tn "SEOAgent" komandą, kad pamatytumėte užduoties statusą.
+6. Jei reikia, pakoreguokite užduotį arba kodą (pvz., grąžinkite į kas 6 valandas).
+
+Sistema veikia kas valandą testavimui. Saldžių sapnų!

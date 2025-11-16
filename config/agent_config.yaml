@@ -2,8 +2,8 @@ agents:
   - name: orchestrator
     type: llm_agent
     model: gemini-2.0-flash-exp
-    system_prompt: "Orchestrate SEO automation with competitor monitoring and website integration."
-    tools: ["rank_checker", "content_generator", "uploader", "competitor_monitor", "website_api"]
+    system_prompt: "Orchestrate comprehensive SEO automation with competitor monitoring, website optimization, geo-targeting, and autonomous content management."
+    tools: ["rank_checker", "content_generator", "uploader", "competitor_monitor", "seo_optimizer", "scheduling_agent", "geo_agent", "website_api"]
     memory: true
 
   - name: rank_checker
@@ -15,7 +15,7 @@ agents:
   - name: content_generator
     type: llm_agent
     model: gemini-2.0-flash-exp
-    system_prompt: "Generate SEO-optimized blog posts using competitor insights."
+    system_prompt: "Generate SEO-optimized blog posts using competitor insights and geo-targeted keywords."
     tools: ["firecrawl", "gemini_llm"]
     memory: true
 
@@ -32,6 +32,26 @@ agents:
     memory: true
     competitors: ["https://example-junk-removal.com", "https://competitor-site.com"]
 
+  - name: seo_optimizer
+    type: llm_agent
+    model: gemini-2.0-flash-exp
+    system_prompt: "Optimize website SEO including meta tags, schema markup, content rewriting, and FAQ generation."
+    tools: ["seo_optimizer_tool", "firecrawl", "github_api"]
+    memory: true
+
+  - name: scheduling_agent
+    type: function_tool
+    function: handle_scheduling
+    tools: ["scheduling_tool"]
+    description: "Manage service scheduling and ETA calculations"
+
+  - name: geo_agent
+    type: llm_agent
+    model: gemini-2.0-flash-exp
+    system_prompt: "Handle geo-specific SEO optimization and local keyword targeting."
+    tools: ["geo_search", "tavily"]
+    memory: true
+
   - name: safety
     type: built_in
     features: ["logging", "evaluation"]
@@ -39,7 +59,7 @@ agents:
 tools:
   - name: geo_search
     type: custom
-    description: "Search for geo-specific rankings"
+    description: "Search for geo-specific rankings and local keywords"
 
   - name: firecrawl
     type: third_party
@@ -61,6 +81,18 @@ tools:
   - name: website_api
     type: custom
     description: "API for website updates and blog uploads"
+
+  - name: seo_optimizer_tool
+    type: custom
+    description: "Comprehensive SEO optimization including content rewriting and FAQ generation"
+
+  - name: scheduling_tool
+    type: custom
+    description: "Service scheduling and ETA calculation"
+
+  - name: tavily
+    type: third_party
+    provider: tavily
 
 runtime:
   mode: local
