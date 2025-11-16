@@ -1107,9 +1107,131 @@
         "Clear CTAs",
         "Social proof"
       ]
+    },
+    {
+      "timestamp": "2025-11-16T14:08:49.360053",
+      "strategy": {
+        "content_type": "comprehensive_guide",
+        "primary_keywords": [
+          "junk removal Vilnius",
+          "atliekų išvežimas",
+          "eco-friendly disposal",
+          "professional cleanup"
+        ],
+        "secondary_keywords": [
+          "best junk removal Vilnius",
+          "best atliekų išvežimas",
+          "best eco-friendly disposal",
+          "best professional cleanup",
+          "professional junk removal Vilnius",
+          "professional atliekų išvežimas",
+          "professional eco-friendly disposal",
+          "professional professional cleanup"
+        ],
+        "long_tail_keywords": [
+          "junk removal Vilnius services in Vilnius",
+          "atliekų išvežimas services in Vilnius",
+          "eco-friendly disposal services in Vilnius",
+          "professional cleanup services in Vilnius",
+          "how to choose junk removal Vilnius company",
+          "how to choose atliekų išvežimas company",
+          "how to choose eco-friendly disposal company",
+          "how to choose professional cleanup company",
+          "junk removal Vilnius cost in Vilnius",
+          "atliekų išvežimas cost in Vilnius",
+          "eco-friendly disposal cost in Vilnius",
+          "professional cleanup cost in Vilnius"
+        ],
+        "search_intent": {
+          "primary": "commercial",
+          "secondary": "informational",
+          "user_journey": "awareness"
+        },
+        "content_structure": [
+          "H1",
+          "Content",
+          "CTA"
+        ],
+        "emotional_appeal": [
+          "trust",
+          "reliability",
+          "local_support"
+        ],
+        "engagement_hooks": [
+          "Storytelling",
+          "Questions",
+          "Statistics",
+          "Personal anecdotes",
+          "Visual elements"
+        ],
+        "conversion_elements": [
+          "Primary CTA",
+          "Secondary CTA",
+          "Lead magnet",
+          "Social proof",
+          "Urgency elements"
+        ],
+        "multimedia_suggestions": [
+          "Hero image",
+          "Infographics",
+          "Customer photos",
+          "Process diagrams",
+          "Video testimonials"
+        ],
+        "internal_linking_strategy": [
+          "Internal links to related content",
+          "External links to authoritative sources",
+          "Resource pages"
+        ],
+        "social_sharing_optimization": [
+          "Open Graph meta tags",
+          "Twitter Cards",
+          "Share buttons",
+          "Social media previews"
+        ],
+        "voice_search_optimization": [
+          "Question-based headings",
+          "Conversational language",
+          "Featured snippet optimization"
+        ],
+        "mobile_optimization": [
+          "Responsive design",
+          "Fast loading",
+          "Touch-friendly elements",
+          "Readable fonts"
+        ],
+        "accessibility_features": [
+          "Alt text for images",
+          "Semantic HTML",
+          "Keyboard navigation",
+          "Screen reader support"
+        ],
+        "international_seo": [
+          "Hreflang tags",
+          "Local currency",
+          "Cultural adaptation",
+          "Local contact info"
+        ]
+      },
+      "quality_score": 37,
+      "performance_predictions": {},
+      "keywords_used": [
+        "junk removal Vilnius",
+        "atliekų išvežimas",
+        "eco-friendly disposal",
+        "professional cleanup"
+      ],
+      "content_type": "comprehensive_guide",
+      "success_patterns": [
+        "Strong introduction",
+        "Data-backed claims",
+        "Clear CTAs",
+        "Social proof"
+      ]
     }
   ],
   "performance_data": [
+    {},
     {},
     {},
     {},
