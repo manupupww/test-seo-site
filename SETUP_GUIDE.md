@@ -25,26 +25,21 @@ Fill in your real API keys in `.env` file (never commit this file).
 ### 3. Test Locally
 Run `python main.py` to test if everything works.
 
-### 4. Deploy to Render (24/7 net kai kompiuteris išjungtas)
-1. Eikite į https://dashboard.render.com
-2. Sukurkite naują "Web Service"
-3. Prijunkite GitHub repo: `manupupww/test-seo-site`
-4. Runtime: Docker
-5. Branch: main
-6. Build Command: (palikite tuščią)
-7. Start Command: `sh -c "cron && tail -f /dev/null"`
-8. Environment: Pridėkite kintamuosius iš .env failo:
+### 4. Deploy to GitHub (24/7 net kai kompiuteris išjungtas)
+1. Push kodą į savo GitHub repo
+2. Eikite į repo Settings > Secrets and variables > Actions
+3. Pridėkite secrets iš .env failo:
    - GOOGLE_GENAI_API_KEY
    - TAVILY_API_KEY
    - FIRECRAWL_API_KEY
    - GITHUB_TOKEN
-9. Deploy
-10. Agentas automatiškai veiks kas valandą debesyje
+4. Sukurkite .github/workflows/main.yml failą automatiniam veikimui
+5. Deploy - agentas veiks 24/7 per GitHub Actions
 
 ### 5. Verify
-- Check Render logs for agent activity
+- Check GitHub Actions logs for agent activity
 - Visit your website to see new posts
-- Agent runs every 6 hours automatically
+- Agent runs automatically pagal nustatytą schedule
 
 ## What the Agent Does
 - Generates SEO-optimized blog posts

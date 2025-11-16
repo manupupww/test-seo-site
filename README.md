@@ -31,14 +31,11 @@ This project implements an expert-level AI agent that surpasses human SEO superv
 6. Stop: `docker-compose down`
 
 ## Cloud Deployment (24/7 kai kompiuteris išjungtas)
-Rekomenduojama naudoti Render.com:
+Rekomenduojama naudoti GitHub Pages arba bet kurį hostingą su GitHub integracija:
 1. Push kodą į GitHub
-2. Sukurkite Render Web Service
-3. Prijunkite GitHub repo
-4. Runtime: Docker
-5. Start Command: `sh -c "cron && tail -f /dev/null"`
-6. Pridėkite API keys į Environment
-7. Deploy - agentas veiks 24/7 debesyje
+2. Nustatykite automatinius workflows (GitHub Actions)
+3. Pridėkite API keys į GitHub Secrets
+4. Deploy - agentas veiks 24/7 debesyje
 
 ## Local Docker (testavimui)
 ```bash

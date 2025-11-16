@@ -9,22 +9,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the project
 COPY . .
 
-# Environment variables will be set in Render dashboard for security
+# Environment variables will be set in GitHub Secrets for security
 # DO NOT hardcode secrets here
-
-# Install cron and set up for 24/7 operation
-RUN apt-get update && apt-get install -y cron
-
-# Copy cron job
-COPY cronjob /etc/cron.d/agent-cron
-RUN chmod 0644 /etc/cron.d/agent-cron && crontab /etc/cron.d/agent-cron
 
 # Create log directory
 RUN mkdir -p /app/logs
 
-# Copy railway start script
-COPY railway_start.sh /app/railway_start.sh
-RUN chmod +x /app/railway_start.sh
-
-# Start with railway script or cron
-CMD ["/app/railway_start.sh"]
+# Default command for GitHub Actions
+CMD ["python", "main.py"]

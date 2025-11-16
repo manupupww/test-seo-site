@@ -2,6 +2,8 @@ from tools.advanced_seo_monitor import AdvancedSEOMonitor
 from tools.ab_testing_framework import ABTestingFramework
 from tools.voice_search_optimizer import VoiceSearchOptimizer
 from tools.advanced_competitor_intelligence import AdvancedCompetitorIntelligence
+from typing import Dict, List
+from datetime import datetime
 
 class AdvancedSEOAgent:
     """Next-level SEO agent with advanced monitoring, testing, and intelligence"""
@@ -25,33 +27,33 @@ class AdvancedSEOAgent:
 
         try:
             # 1. Advanced SEO Monitoring
-            print("🔍 Running advanced SEO monitoring...")
+            print("SEARCH Running advanced SEO monitoring...")
             seo_report = self.seo_monitor.get_comprehensive_seo_report()
             results["seo_monitoring"] = seo_report
 
             # 2. A/B Testing Setup
-            print("🧪 Setting up A/B tests...")
+            print("TEST Setting up A/B tests...")
             ab_results = self._setup_ab_tests()
             results["ab_testing"] = ab_results
 
             # 3. Voice Search Optimization
-            print("🎤 Optimizing for voice search...")
+            print("VOICE Optimizing for voice search...")
             voice_results = self._optimize_for_voice_search()
             results["voice_optimization"] = voice_results
 
             # 4. Competitor Intelligence
-            print("🔍 Analyzing competitor intelligence...")
+            print("SEARCH Analyzing competitor intelligence...")
             competitor_results = self._analyze_competitor_intelligence()
             results["competitor_intelligence"] = competitor_results
 
             # 5. Generate Recommendations
             results["recommendations"] = self._generate_advanced_recommendations(results)
 
-            print("✅ Advanced SEO workflow completed successfully")
+            print("SUCCESS Advanced SEO workflow completed successfully")
             return results
 
         except Exception as e:
-            print(f"❌ Advanced SEO workflow failed: {e}")
+            print(f"ERROR Advanced SEO workflow failed: {e}")
             results["error"] = str(e)
             return results
 

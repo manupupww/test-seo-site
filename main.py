@@ -17,21 +17,15 @@ def main():
     # Load .env file
     load_dotenv()
 
-    # Check deployment mode
-    deployment_mode = os.getenv("DEPLOYMENT_MODE", "local")
-    update_frequency = os.getenv("UPDATE_FREQUENCY", "hourly")
-
-    logging.info(f"Deployment mode: {deployment_mode}, Update frequency: {update_frequency}")
-
     # Load keys from env
     google_key = os.getenv("GOOGLE_GENAI_API_KEY")
     tavily_key = os.getenv("TAVILY_API_KEY")
     firecrawl_key = os.getenv("FIRECRAWL_API_KEY")
     github_token = os.getenv("GITHUB_TOKEN")
 
-    # For Railway deployment, allow missing keys initially (will use mock data)
-    if deployment_mode == "local" and not all([google_key, tavily_key, firecrawl_key, github_token]):
-        logging.error("Missing API keys in local mode")
+    # Check for required API keys
+    if not all([google_key, tavily_key, firecrawl_key, github_token]):
+        logging.error("Missing API keys")
         print("Missing API keys. Fill in .env file with your keys.")
         return
 
@@ -39,22 +33,22 @@ def main():
     logging.info(f"API Keys status - Google: {'YES' if google_key else 'NO'}, Tavily: {'YES' if tavily_key else 'NO'}, Firecrawl: {'YES' if firecrawl_key else 'NO'}, GitHub: {'YES' if github_token else 'NO'}")
 
     # Level 3 AI Orchestrator - Maximum Capabilities
-    print("🚀 Initializing Level 3 AI Orchestrator with maximum capabilities...")
+    print("Initializing Level 3 AI Orchestrator with maximum capabilities...")
     orchestrator = Level3AIOrchestrator()
 
     # Run maximum AI workflow
     result = orchestrator.run_maximum_ai_workflow()
     logging.info(f"Level 3 AI Workflow result: {result}")
-    print(f"🎯 Level 3 AI Workflow completed: {result.get('status', 'Unknown')}")
+    print(f"Level 3 AI Workflow completed: {result.get('status', 'Unknown')}")
 
     # Performance summary
     metrics = result.get('performance_metrics', {})
-    print(f"📊 AI Utilization: {metrics.get('ai_utilization_achieved', '0%')}")
-    print(f"⚡ Optimizations Applied: {metrics.get('optimizations_applied', 0)}")
-    print(f"🧠 Learning Insights: {metrics.get('learning_insights_generated', 0)}")
+    print(f"AI Utilization: {metrics.get('ai_utilization_achieved', '0%')}")
+    print(f"Optimizations Applied: {metrics.get('optimizations_applied', 0)}")
+    print(f"Learning Insights: {metrics.get('learning_insights_generated', 0)}")
 
-    # For Railway deployment, commit changes back to GitHub if we have a token
-    if deployment_mode == "railway" and github_token and github_token != "mock_token":
+    # Commit changes back to GitHub if we have a token
+    if github_token and github_token != "mock_token":
         try:
             import subprocess
             # Add all changes
@@ -70,9 +64,8 @@ def main():
             logging.error(f"Failed to commit/push changes: {e}")
             print(f"Failed to commit/push changes: {e}")
 
-    # Update dashboard (only in local mode)
-    if deployment_mode == "local":
-        update_dashboard(result)
+    # Update dashboard
+    update_dashboard(result)
 
 def update_dashboard(workflow_result):
     # Read memory.json

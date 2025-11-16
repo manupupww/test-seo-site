@@ -6,3 +6,5 @@ firecrawl-py
 python-dotenv
 requests
 beautifulsoup4
+psutil
+slack-sdk
